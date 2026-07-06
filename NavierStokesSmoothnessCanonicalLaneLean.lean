@@ -1,0 +1,7 @@
+-- This module is the root of the NavierStokesSmoothnessCanonicalLaneLean Lean proof package.
+import NavierStokesSmoothnessCanonicalLaneLean.Basic
+import NavierStokesSmoothnessCanonicalLaneLean.SourcePackage
+import NavierStokesSmoothnessCanonicalLaneLean.SourceDependencies
+import NavierStokesSmoothnessCanonicalLaneLean.Formalization
+import NavierStokesSmoothnessCanonicalLaneLean.ReviewerBridge
+import NavierStokesSmoothnessCanonicalLaneLean.TheoremStatement
