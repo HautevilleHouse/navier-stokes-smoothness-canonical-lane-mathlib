@@ -20,7 +20,7 @@ structure AdmittedTheoremObject where
   sourceKeyChecked : object.sourceKey = sourceRepository
   theoremObjectChecked : object.theoremObject = sourceDescription
 
-structure EndgameState where
+structure ClosureState where
   object : AdmittedTheoremObject
 
 def theoremSpecificObject : TheoremSpecificObject := {

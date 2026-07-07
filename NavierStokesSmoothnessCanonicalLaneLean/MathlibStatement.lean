@@ -5,7 +5,7 @@ import CanonicalLaneMathlibCore
 # Mathlib Statement Layer
 
 This module imports the shared Mathlib-backed Canonical Lane core and the
-Navier Stokes Smoothness endgame pilot. The pilot closes over its admitted class and carries the
+Navier Stokes Smoothness closure package. The pilot closes over its admitted class and carries the
 unrestricted classical boundary separately.
 -/
 
@@ -33,7 +33,7 @@ def mathlibProofObligation : MathlibProofObligation := {
   theoremSpecificBridgeNative := true,
   theoremSpecificAdmittedClosureNative := true,
   unrestrictedClassicalClosureNative := false,
-  carriedGap := "theorem-specific Mathlib endgame pilot closes over the admitted class; unrestricted classical closure remains carried"
+  carriedGap := "theorem-specific Mathlib closure package closes over the admitted class; unrestricted classical closure remains carried"
 }
 
 def commonCoreProjectionLawAvailable : Prop :=
@@ -83,13 +83,13 @@ theorem mathlib_common_core_idempotence_checked :
   intro X instAdd instSub L
   exact AdditiveLane.projection_idempotent_on_delta L
 
-def theoremSpecificEndgamePilotClosed : Prop :=
+def theoremSpecificClosurePackageClosed : Prop :=
   forall A : AdmissibleClass, ConstrainedTheoremClosure A
 
-theorem theorem_specific_endgame_pilot_checked :
-    theoremSpecificEndgamePilotClosed := by
+theorem theorem_specific_closure_package_checked :
+    theoremSpecificClosurePackageClosed := by
   intro A
-  exact constrained_theorem_endgame A
+  exact constrained_theorem_closure A
 
 end NavierStokesSmoothnessCanonicalLaneLean
 end HautevilleHouse
