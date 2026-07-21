@@ -1,0 +1,27 @@
+name: core-pin-hygiene
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch shared pin-hygiene checker from canonical-lane-mathlib
+        run: |
+          set -euo pipefail
+          mkdir -p scripts
+          curl -fsSL \
+            "https://raw.githubusercontent.com/HautevilleHouse/canonical-lane-mathlib/main/scripts/check_mathlib_core_pin_hygiene.py" \
+            -o scripts/check_mathlib_core_pin_hygiene.py
+      - name: Pin exists and README matches lakefile (behind main is allowed)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/check_mathlib_core_pin_hygiene.py --repo-root .
